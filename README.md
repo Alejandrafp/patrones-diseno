@@ -1,4 +1,4 @@
-## patrones de diseño
+## Patrones de diseño
 Ejercicios practicos del curso Patrones de Diseño: Soluciones prácticas y eficientes
 
 El código está escrito en TypeScript y usamos Deno para ejecutarlo, puedes usar Bun o Node si lo prefieres.
