@@ -1,21 +1,31 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
     "jsr:@deno-library/logger@*": "1.1.7",
+    "jsr:@deno-library/logger@^1.2.0": "1.2.0",
     "jsr:@std/assert@1": "1.0.7",
     "jsr:@std/fmt@1.0.3": "1.0.3",
     "jsr:@std/fs@1.0.5": "1.0.5",
+    "jsr:@std/fs@^1.0.6": "1.0.17",
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "jsr:@std/io@0.225.0": "0.225.0",
-    "jsr:@std/path@^1.0.7": "1.0.8"
+    "jsr:@std/path@^1.0.7": "1.0.8",
+    "jsr:@std/path@^1.0.9": "1.0.9"
   },
   "jsr": {
     "@deno-library/logger@1.1.7": {
       "integrity": "817947f12178e0faf21d43e4ec3823272dbdbb897dea74aec1220b00d60dc6bd",
       "dependencies": [
         "jsr:@std/fmt",
-        "jsr:@std/fs",
+        "jsr:@std/fs@1.0.5",
         "jsr:@std/io"
+      ]
+    },
+    "@deno-library/logger@1.2.0": {
+      "integrity": "c6f0371cb2d08c0a7b82d30d494fac5d25f115695c63a3a295c4e35a0e6669a0",
+      "dependencies": [
+        "jsr:@std/fmt",
+        "jsr:@std/fs@^1.0.6"
       ]
     },
     "@std/assert@1.0.7": {
@@ -30,7 +40,13 @@
     "@std/fs@1.0.5": {
       "integrity": "41806ad6823d0b5f275f9849a2640d87e4ef67c51ee1b8fb02426f55e02fd44e",
       "dependencies": [
-        "jsr:@std/path"
+        "jsr:@std/path@^1.0.7"
+      ]
+    },
+    "@std/fs@1.0.17": {
+      "integrity": "1c00c632677c1158988ef7a004cb16137f870aafdb8163b9dce86ec652f3952b",
+      "dependencies": [
+        "jsr:@std/path@^1.0.9"
       ]
     },
     "@std/internal@1.0.5": {
@@ -41,10 +57,24 @@
     },
     "@std/path@1.0.8": {
       "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
+    },
+    "@std/path@1.0.9": {
+      "integrity": "260a49f11edd3db93dd38350bf9cd1b4d1366afa98e81b86167b4e3dd750129e"
     }
+  },
+  "remote": {
+    "https://deno.land/x/logger@v1.1.7/date.ts": "83583acb4f1452214db7cfd40fa38a5c9e7d8c955b303704517c2ccc94d49d58",
+    "https://deno.land/x/logger@v1.1.7/deps.ts": "108decf275a664a79a70c7200639b89a4be7d0a424050c21187c2100ab10044f",
+    "https://deno.land/x/logger@v1.1.7/eol.ts": "8da67b2cb62c1cee6920e88797f1d9f647425df7f4decafc4dd3775e29d0125d",
+    "https://deno.land/x/logger@v1.1.7/logger.ts": "4f02b79cb5661ec07df108fd00ca360f1e32a44853abf9fe6df0bb9ff0a229f6",
+    "https://deno.land/x/logger@v1.1.7/stdout.ts": "28ff623094e1719d86a093c589558fba095caba4f30832493d07e82ea2d4ae59",
+    "https://deno.land/x/logger@v1.1.7/types.ts": "7769b3a4059d25090a55079ee1ef77ff76adbcab22d017fe0a8a4a96e1eac8a0",
+    "https://deno.land/x/logger@v1.1.7/writable.ts": "254dda12a1e6e5d5af474eea1ae4be232625810c698bb12ca30fd53485567282",
+    "https://deno.land/x/logger@v1.1.7/writer.ts": "e712eb8d59265262b3e398ca308ba8bf0187936d705bc60d446237d6d81f9d60"
   },
   "workspace": {
     "dependencies": [
+      "jsr:@deno-library/logger@^1.2.0",
       "jsr:@std/assert@1"
     ]
   }
