@@ -44,19 +44,27 @@ class MenuItem implements MenuComponent {
 // 3. Clase MenuCategory
 // Representa una categoría de menú que puede contener otros ítems o subcategorías.
 class MenuCategory implements MenuComponent {
-  // TODO: Crear dos propiedades privadas: name y items
-  // Name sting y items arreglo de MenuComponent
-  // Name es recibida en el constructor, items se inicializa como un arreglo vacío
+  private name: string;
+  private items: MenuComponent[] = [];
+
+  constructor(name: string) {
+    this.name = name
+  }
 
   //TODO: Sobrecarga de operadores - Item puede ser MenuComponent o un arreglo de MenuComponent
-  add(item: unknown): void {
-    // TODO: Implementar la sobrecarga de operadores
-    throw new Error('Method not implemented.');
+  add(item: MenuComponent | MenuComponent[]): void {
+    if (Array.isArray(item)) {
+      this.items.push(...item);
+      return;
+    } 
+
+      this.items.push(item);
+
   }
 
   showDetails(indent: string = ''): void {
     console.log(`%c${indent}+ ${this.name}`, COLORS.blue);
-    // TODO: Implementar foreach
+    this.items.forEach(item => item.showDetails(indent + ' '));
   }
 }
 
