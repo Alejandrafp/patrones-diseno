@@ -25,55 +25,49 @@ abstract class BaseApprover implements Approver {
     return approver;
   }
 
-  //! Este método debe de ser implementado por las subclases.
+
   abstract approveRequest(amount: number): void;
 
   protected next(amount: number): void {
     if (this.nextApprover) {
       this.nextApprover.approveRequest(amount);
       return;
-    } 
+    }
     console.log('Solicitud no pudo ser aprobada.');
-    
+
   }
 }
 
 // 3. Clases Concretas de Aprobadores
 
 class Supervisor extends BaseApprover {
-  // TODO: Implementar el método approveRequest si el monto es menor o igual a 1000
-  // TODO: Si el monto es mayor a 1000, pasar la solicitud al siguiente aprobador
   override approveRequest(amount: number): void {
-    if(amount <= 1000){
+    if (amount <= 1000) {
       console.log(`%cRevisando solicitud: Supervisor aprueba la compra ${amount}`, COLORS.purple)
       return;
     }
     console.log('Solicitud no realizada: %cPasando solicitud al siguiente aprobador', COLORS.brown)
 
-   this.next(amount);
+    this.next(amount);
   }
 }
 
 class Manager extends BaseApprover {
-  //TODO: Implementar el método approveRequest si el monto es menor o igual a 5000
-  // TODO: Si el monto es mayor a 5000, pasar la solicitud al siguiente aprobador
-
   override approveRequest(amount: number): void {
-  if(amount <= 5000){
+    if (amount <= 5000) {
       console.log(`%cRevisando solicitud: Manager aprobo la solicitud de ${amount}`, COLORS.pink)
       return
     }
     console.log('Solicitud no realizada: %cPasando solicitud al siguiente aprobador', COLORS.red)
 
-      this.next(amount);
+    this.next(amount);
   }
 }
 
 class Director extends BaseApprover {
-  // TODO: Implementar el método approveRequest si el monto
   override approveRequest(amount: number): void {
     console.log(`Solicitud realizada: %cDirector aprobo el monto solicitado ${amount}.`, COLORS.blue)
-    
+
   }
 }
 
