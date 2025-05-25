@@ -1,3 +1,4 @@
+import { COLORS } from '../helpers/colors.ts';
 /**
  * ! Patrón Template Method
  *
@@ -26,3 +27,62 @@
  * ya que define un esqueleto general del algoritmo en una clase base
  * y delega los detalles específicos a las subclases.
  */
+
+abstract class HotBeverage{
+    prepare(): void{
+        this.boilWater();
+        this.addMainIngredient();
+        this.pourInCup();
+        this.addCondimients();
+    }
+
+    private boilWater(){
+        console.log('Hirviendo agua...');
+    }
+
+    
+    private pourInCup(){
+        console.log('Sirviendo en la taza...');
+    }
+
+    protected abstract addMainIngredient(): void;
+    protected abstract addCondimients(): void;
+
+
+}
+
+
+class Tea extends HotBeverage{
+    protected override addMainIngredient(): void {
+        console.log('Añadiendo una bolsa de te');
+    }
+    protected override addCondimients(): void {
+        console.log('Añadiendo miel y limon');
+
+    }
+
+}
+
+class Coffe extends HotBeverage{
+    protected override addMainIngredient(): void {
+        console.log('Añadiendo cafe molido');
+    }
+    protected override addCondimients(): void {
+        console.log('Añadiendo azucar y leche');
+
+    }
+
+}
+
+function main(){
+console.log(`%cPreparando el te`, COLORS.blue);
+const tea = new Tea;
+tea.prepare();
+
+console.log(`\n%cPreparando el cafe`, COLORS.orange);
+const coffe = new Coffe;
+coffe.prepare();
+
+}
+
+main();
